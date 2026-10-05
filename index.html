@@ -633,9 +633,14 @@ async function spin(isFree=false){
     }
 
     if(freeSpin){
-      bonusSpins=Math.max(0,bonusSpins-1);
-      if(outcome.total>0) bonusSpins=Math.min(12,bonusSpins+1);
-      updateBonusUI();
+      if (arcadeRound) {
+    arcadeRounds = Math.max(0, arcadeRounds - 1);
+    updateArcadeUI();
+
+    if (arcadeRounds === 0) {
+        endArcadeRound();
+    }
+}
 
       if(bonusSpins<=0){
         multiplier=1;
